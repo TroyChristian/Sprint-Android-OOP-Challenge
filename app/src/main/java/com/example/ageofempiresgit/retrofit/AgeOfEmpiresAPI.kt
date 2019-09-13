@@ -19,7 +19,7 @@ interface StarWarsAPI {
     fun getStructure(id:Int):Call<Structure>
 
     @GET("/unit/{id}")
-    fun getUnit(id: Int): Call<Unit> 
+    fun getUnit(id: Int): Call<Unit>
 
     class Factory {
 

@@ -1,5 +1,7 @@
 package com.example.ageofempiresgit.dummy
 
+import com.example.ageofempiresgit.model.AOEobject
+import com.example.ageofempiresgit.model.empireObjects
 import java.util.ArrayList
 import java.util.HashMap
 
@@ -9,30 +11,30 @@ import java.util.HashMap
  *
  * TODO: Replace all uses of this class before publishing your app.
  */
-object DummyContent {
+object AOEobject {
 
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<DummyItem> = ArrayList()
+    val ITEMS = empireObjects
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, AOEobject> = HashMap()
 
     private val COUNT = 25
 
     init {
         // Add some sample items.
         for (i in 1..COUNT) {
-            addItem(createDummyItem(i))
+            addItem(createAOEobjectitem(i))
         }
     }
 
-    private fun addItem(item: DummyItem) {
+    private fun addItem(item: AOEobject) {
         ITEMS.add(item)
-        ITEM_MAP.put(item.id, item)
+        ITEM_MAP.put(item.id.toString(), item)
     }
 
     private fun createDummyItem(position: Int): DummyItem {
@@ -51,7 +53,7 @@ object DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val content: String, val details: String) {
-        override fun toString(): String = content
+    /*data class DummyItem(val id: String, val content: String, val details: String) {
+        override fun toString(): String = content*/
     }
-}
+//}
