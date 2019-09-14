@@ -1,5 +1,6 @@
 package com.example.ageofempiresgit
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,9 @@ import com.example.ageofempiresgit.model.AOEobject
 import com.example.ageofempiresgit.model.squire
 
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.android.synthetic.main.item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
+import kotlinx.android.synthetic.main.item_detail.view.item_detail
 
 /**
  * A fragment representing a single Item detail screen.
@@ -20,11 +23,16 @@ import kotlinx.android.synthetic.main.item_detail.view.*
  * on handsets.
  */
 class ItemDetailFragment : Fragment() {
-
+    private lateinit var listener: OnFragmentOneInteractionListener
     /**
      * The dummy content this fragment is presenting.
      */
     private var item: AOEobject? = squire
+
+    override fun onAttach(context: Context){
+        super.onAttach(context)
+        if(context is ItemDetailFragment.OnFragmentOneInteractionListener){
+            listener = context}}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +42,7 @@ class ItemDetailFragment : Fragment() {
                 // Load the dummy content specified by the fragment
                 // arguments. In a real-world scenario, use a Loader
                 // to load content from a content provider.
+
 
                 item = it.getSerializable(ARG_ITEM_ID) as? AOEobject
 
@@ -58,6 +67,7 @@ class ItemDetailFragment : Fragment() {
         return rootView
     }
 
+
     companion object {
         /**
          * The fragment argument representing the item ID that this fragment
@@ -65,4 +75,10 @@ class ItemDetailFragment : Fragment() {
          */
         const val ARG_ITEM_ID = "item_id"
     }
+
+
+    interface OnFragmentOneInteractionListener{
+        fun onFragOneInteraction(data: String)
+    }
 }
+
