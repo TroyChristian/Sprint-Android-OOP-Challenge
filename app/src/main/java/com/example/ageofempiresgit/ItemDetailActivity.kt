@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import com.example.ageofempiresgit.ItemDetailFragment.Companion.ARG_ITEM_ID
 import com.example.ageofempiresgit.dummy.DummyContent.masterList
 import kotlinx.android.synthetic.main.activity_item_detail.*
@@ -22,11 +23,14 @@ class ItemDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
         setSupportActionBar(detail_toolbar)
+        var place = masterList.random().getInfo()
+
 
         fab.setOnClickListener { view ->
 
-            Snackbar.make(view, masterList.random().getInfo(), Snackbar.LENGTH_LONG)
+            Snackbar.make(view, place, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+            detail_toolbar.title = place //trying to display the info of a clicked member of RecyclerView
         }
 
         // Show the Up button in the action bar.
