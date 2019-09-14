@@ -31,6 +31,7 @@ class ItemDetailActivity : AppCompatActivity() {
             Snackbar.make(view, place, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
             detail_toolbar.title = place //trying to display the info of a clicked member of RecyclerView
+
         }
 
         // Show the Up button in the action bar.
