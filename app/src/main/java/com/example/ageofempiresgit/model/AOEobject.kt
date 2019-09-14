@@ -3,9 +3,9 @@ package com.example.ageofempiresgit.model
 import java.io.Serializable
 
 abstract class  AOEobject(
-    open val name:String? = null, open val id: Int, open var isFavorite: Boolean = false
+    open val name:String = "", open val id: Int, open var isFavorite: Boolean = false
 ):Serializable{
-    open fun getInfo(): String?{
+    open fun getInfo(): String{
         return "This object is from age of Empires its called a $name"
 
     }
@@ -38,4 +38,6 @@ var trebuchet = Unit("Trebuchet", 22, false,  "Powerful siege weapon used to des
 var cannonGalleon = Unit("Cannon Galleon", 24, false,"Long-range warship used to attack targets on shore to establish beachhead. Fires slowly and has minimum range",
     "0/6")
 
-val empireObjects = listOf(Frank, Hun, lumberCamp, miningCamp, squire, champion, trebuchet, cannonGalleon)
+abstract class listHolder(name:String, id:Int): AOEobject(name, id){
+    var masterList = listOf(squire, champion, trebuchet, cannonGalleon, miningCamp, lumberCamp, Hun, Frank)
+}

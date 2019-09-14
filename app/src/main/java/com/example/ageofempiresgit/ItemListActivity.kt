@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import com.example.ageofempiresgit.dummy.DummyContent
+import com.example.ageofempiresgit.dummy.DummyContent.masterList
+import com.example.ageofempiresgit.model.AOEobject
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlinx.android.synthetic.main.item_list_content.view.*
 import kotlinx.android.synthetic.main.item_list.*
@@ -51,16 +53,16 @@ class ItemListActivity : AppCompatActivity() {
             twoPane = true
         }
 
-        setupRecyclerView(item_list)
+        setupRecyclerView(item_list) //item list is the RecyclerViews id in item_list.xml
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
+        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, masterList, twoPane)
     }
 
     class SimpleItemRecyclerViewAdapter(
         private val parentActivity: ItemListActivity,
-        private val values: List<DummyContent.DummyItem>,
+        private val values: List<AOEobject>,
         private val twoPane: Boolean
     ) :
         RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
@@ -97,8 +99,8 @@ class ItemListActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = values[position]
-            holder.idView.text = item.id
-            holder.contentView.text = item.content
+            holder.idView.text = item.id.toString()
+            holder.contentView.text = item.name
 
             with(holder.itemView) {
                 tag = item
