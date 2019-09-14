@@ -5,7 +5,10 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import com.example.ageofempiresgit.ItemDetailFragment.Companion.ARG_ITEM_ID
+import com.example.ageofempiresgit.dummy.DummyContent.masterList
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.android.synthetic.main.item_list_content.*
 
 /**
  * An activity representing a single Item detail screen. This
@@ -21,7 +24,8 @@ class ItemDetailActivity : AppCompatActivity() {
         setSupportActionBar(detail_toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+
+            Snackbar.make(view, masterList.random().getInfo(), Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
 
@@ -69,4 +73,11 @@ class ItemDetailActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-}
+
+
+    }
+
+
+
+
+
